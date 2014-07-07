@@ -1,0 +1,128 @@
+<!doctype html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Blackjack Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,
+              initial-scale=1.0,
+              maximum-scale=1.0,
+              user-scalable=no">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+    </head>
+
+    <body role="document" style="padding-top: 60px">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> <!-- navbar -->
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html" style="color: greenyellow;">BLACKJACK</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="list.html">List of Games</a></li>
+                        <li><a href="create_game.html">Create a Game</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> <!-- navbar -->
+
+        <div id="mainWindow" class="container">
+            <div id="centerCol" class="col-lg-4 col-lg-push-4 col-sm-12 text-center"> <!-- center col -->
+                <h2 id="room-name">Room Name</h2> <span id="game-status">waiting for players...</span>
+                <div id="dealer">
+                    <div id="dealer-text">
+                        <h3>Dealer: 0</h3>
+                    </div>
+                    <div id="dealer-cards">
+                    </div>
+                </div>
+
+                <div id="player-view" style="margin-top: 3%;">
+
+                    <div id="player-first" class="well">
+                        <div id="player-first-bet">
+                        </div>
+                        <div id="player-first-hand">
+                        </div> 
+                    </div>
+                    <div id="player-second" class="well">
+                        <div id="player-second-bet">
+                        </div>
+
+                        <div id="player-second-hand">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="player-buttons" class="btn-group" style="margin-top: 2%;">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm dropdown-toggle btn-primary"
+                                data-toggle="dropdown">
+                            Place Bet
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="placeBet" class="dropdown-menu">
+                            <li><a>5$</a></li>
+                            <li><a>10$</a></li>
+                            <li><a>25$</a></li>
+                            <li><a>100$</a></li>
+                        </ul>
+                    </div>
+
+                    <button id="hit"    type="button" class="btn btn-default btn-sm btn-primary">Hit</button>
+                    <button id="double" type="button" class="btn btn-default btn-sm btn-primary">Double</button>
+                    <button id="split"  type="button" class="btn btn-default btn-sm btn-primary">Split</button>
+                    <button id="stand"  type="button" class="btn btn-default btn-sm btn-primary">Stand</button>
+                    <button id="resign"  type="button" class="btn btn-default btn-sm btn-primary">Resign</button>
+
+                </div>
+                <div id="player-info" class="panel panel-success text-center" style="margin-top: 2%;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Player Info</h3>
+                    </div>
+                    <div id="player-info-text">
+                    </div>
+                </div>
+            </div>                                                                 <!-- center col -->
+
+            <div id="leftCol" class="col-lg-4 col-sm-6 col-lg-pull-4 text-center"> <!-- left col -->
+                <div id="remote-players" class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Remote Players</h3>
+                    </div>
+                </div>
+            </div>                                                              <!-- left col -->
+
+            <div id="rightCol" class="col-lg-4 col-sm-6 text-center"> <!-- right col -->
+                <div id="game-messages" class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Messages</h3>
+                    </div>
+
+                </div>
+            </div> <!-- right col -->
+
+        </div> <!-- Container -->
+        <script src="js/vendor/jquery/jquery.js"></script>
+        <script src="js/vendor/bootstrap/bootstrap.min.js"></script>
+        <script src="js/globals.js"></script>
+        <script src="js/gameModel.js"></script>
+        <script src="js/gameView.js"></script>
+        <script src="js/gameController.js"></script>
+        <script>
+            gameController.init(gameModel, gameView);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<game name="my game2">
+    <name>XML game test 1</name>
+
+<humanPlayers>
+    
+    <humanPlayer>
+        <name>Shai</name>
+    </humanPlayer>
+</humanPlayers>
+<computerPlayers>
+    
+    <count>5</count>
+     
+</computerPlayers>
+</game>

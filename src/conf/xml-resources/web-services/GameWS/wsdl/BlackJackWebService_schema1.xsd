@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://blackjack.ws/" xmlns:tns="http://blackjack.ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="DuplicateGameName" type="tns:DuplicateGameName"/>
+
+  <xs:element name="GameDoesNotExists" type="tns:GameDoesNotExists"/>
+
+  <xs:element name="InvalidParameters" type="tns:InvalidParameters"/>
+
+  <xs:element name="InvalidXML" type="tns:InvalidXML"/>
+
+  <xs:element name="createGame" type="tns:createGame"/>
+
+  <xs:element name="createGameFromXML" type="tns:createGameFromXML"/>
+
+  <xs:element name="createGameFromXMLResponse" type="tns:createGameFromXMLResponse"/>
+
+  <xs:element name="createGameResponse" type="tns:createGameResponse"/>
+
+  <xs:element name="getActiveGames" type="tns:getActiveGames"/>
+
+  <xs:element name="getActiveGamesResponse" type="tns:getActiveGamesResponse"/>
+
+  <xs:element name="getEvents" type="tns:getEvents"/>
+
+  <xs:element name="getEventsResponse" type="tns:getEventsResponse"/>
+
+  <xs:element name="getGameDetails" type="tns:getGameDetails"/>
+
+  <xs:element name="getGameDetailsResponse" type="tns:getGameDetailsResponse"/>
+
+  <xs:element name="getPlayerDetails" type="tns:getPlayerDetails"/>
+
+  <xs:element name="getPlayerDetailsResponse" type="tns:getPlayerDetailsResponse"/>
+
+  <xs:element name="getPlayersDetails" type="tns:getPlayersDetails"/>
+
+  <xs:element name="getPlayersDetailsResponse" type="tns:getPlayersDetailsResponse"/>
+
+  <xs:element name="getWaitingGames" type="tns:getWaitingGames"/>
+
+  <xs:element name="getWaitingGamesResponse" type="tns:getWaitingGamesResponse"/>
+
+  <xs:element name="joinGame" type="tns:joinGame"/>
+
+  <xs:element name="joinGameResponse" type="tns:joinGameResponse"/>
+
+  <xs:element name="playerAction" type="tns:playerAction"/>
+
+  <xs:element name="playerActionResponse" type="tns:playerActionResponse"/>
+
+  <xs:element name="resign" type="tns:resign"/>
+
+  <xs:element name="resignResponse" type="tns:resignResponse"/>
+
+  <xs:complexType name="joinGame">
+    <xs:sequence>
+      <xs:element name="gameName" type="xs:string" minOccurs="0"/>
+      <xs:element name="playerName" type="xs:string" minOccurs="0"/>
+      <xs:element name="money" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="joinGameResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GameDoesNotExists">
+    <xs:sequence>
+      <xs:element name="faultInfo" type="tns:blackJackFault" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="blackJackFault">
+    <xs:sequence>
+      <xs:element name="faultCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="faultString" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="InvalidParameters">
+    <xs:sequence>
+      <xs:element name="faultInfo" type="tns:blackJackFault" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="playerAction">
+    <xs:sequence>
+      <xs:element name="playerId" type="xs:int"/>
+      <xs:element name="eventId" type="xs:int"/>
+      <xs:element name="action" type="tns:action" minOccurs="0"/>
+      <xs:element name="money" type="xs:float"/>
+      <xs:element name="bet" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="playerActionResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="resign">
+    <xs:sequence>
+      <xs:element name="playerId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resignResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="createGame">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="humanPlayers" type="xs:int"/>
+      <xs:element name="computerizedPlayers" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createGameResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="DuplicateGameName">
+    <xs:sequence>
+      <xs:element name="faultInfo" type="tns:blackJackFault" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGameDetails">
+    <xs:sequence>
+      <xs:element name="gameName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getGameDetailsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:gameDetails" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gameDetails">
+    <xs:sequence>
+      <xs:element name="computerizedPlayers" type="xs:int"/>
+      <xs:element name="humanPlayers" type="xs:int"/>
+      <xs:element name="joinedHumanPlayers" type="xs:int"/>
+      <xs:element name="loadedFromXML" type="xs:boolean"/>
+      <xs:element name="money" type="xs:double"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="tns:gameStatus" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPlayersDetails">
+    <xs:sequence>
+      <xs:element name="gameName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPlayersDetailsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:playerDetails" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="playerDetails">
+    <xs:sequence>
+      <xs:element name="firstBet" type="tns:card" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="firstBetWage" type="xs:float"/>
+      <xs:element name="money" type="xs:float"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="secondBet" type="tns:card" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="secondBetWage" type="xs:float"/>
+      <xs:element name="status" type="tns:playerStatus" minOccurs="0"/>
+      <xs:element name="type" type="tns:playerType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="card">
+    <xs:sequence>
+      <xs:element name="rank" type="tns:rank" minOccurs="0"/>
+      <xs:element name="suit" type="tns:suit" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getWaitingGames">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getWaitingGamesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPlayerDetails">
+    <xs:sequence>
+      <xs:element name="playerId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPlayerDetailsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:playerDetails" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getActiveGames">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getActiveGamesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createGameFromXML">
+    <xs:sequence>
+      <xs:element name="xmlData" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createGameFromXMLResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="InvalidXML">
+    <xs:sequence>
+      <xs:element name="faultInfo" type="tns:blackJackFault" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEvents">
+    <xs:sequence>
+      <xs:element name="playerId" type="xs:int"/>
+      <xs:element name="eventId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEventsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:event" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="event">
+    <xs:sequence>
+      <xs:element name="cards" type="tns:card" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="money" type="xs:float"/>
+      <xs:element name="playerAction" type="tns:action" minOccurs="0"/>
+      <xs:element name="playerName" type="xs:string" minOccurs="0"/>
+      <xs:element name="timeout" type="xs:int"/>
+      <xs:element name="type" type="tns:eventType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="action">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PlaceBet"/>
+      <xs:enumeration value="Double"/>
+      <xs:enumeration value="Hit"/>
+      <xs:enumeration value="Split"/>
+      <xs:enumeration value="Stand"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="gameStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="WAITING"/>
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="FINISHED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="rank">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TWO"/>
+      <xs:enumeration value="THREE"/>
+      <xs:enumeration value="FOUR"/>
+      <xs:enumeration value="FIVE"/>
+      <xs:enumeration value="SIX"/>
+      <xs:enumeration value="SEVEN"/>
+      <xs:enumeration value="EIGHT"/>
+      <xs:enumeration value="NINE"/>
+      <xs:enumeration value="TEN"/>
+      <xs:enumeration value="JACK"/>
+      <xs:enumeration value="QUEEN"/>
+      <xs:enumeration value="KING"/>
+      <xs:enumeration value="ACE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="suit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CLUBS"/>
+      <xs:enumeration value="DIAMONDS"/>
+      <xs:enumeration value="HEARTS"/>
+      <xs:enumeration value="SPADES"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="playerStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="JOINED"/>
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="RETIRED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="playerType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HUMAN"/>
+      <xs:enumeration value="COMPUTER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="eventType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GameStart"/>
+      <xs:enumeration value="GameOver"/>
+      <xs:enumeration value="GameWinner"/>
+      <xs:enumeration value="PlayerResigned"/>
+      <xs:enumeration value="NewRound"/>
+      <xs:enumeration value="PlayerTurn"/>
+      <xs:enumeration value="CardsDealt"/>
+      <xs:enumeration value="PromptPlayerToTakeAction"/>
+      <xs:enumeration value="UserAction"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
