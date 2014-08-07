@@ -13,3 +13,4 @@ Software/Frameworks/APIs used:
 * Google Gson
 
 You can try the game on [Red Hat OpenShift Cloud](http://tomcat-nirzarko.rhcloud.com/api/ "Blackjack Web App")
+(The service might be down, since it's on a free tier)
