@@ -3,16 +3,16 @@ Online Blackjack Game
 
 A web-based multiplayer Blackjack game with responsive UI.
 
-Software/Frameworks/APIs used:
+<h3>Software/Frameworks/APIs used:</h3>
 <br>
 
-<h3>Backend:</h3>
+<h5>Backend:</h5>
 * Tomcat web container
 * JAX-WS (SOAP messages)
 * Java EE Servlets
 * Google Gson
 
-</h3>Frontend:</h3>
+<h5>Frontend:</h5>
 * HTML5 
 * JavaScript / jQuery
 * Twitter Bootstrap
