@@ -3,9 +3,8 @@ Online Blackjack Game
 
 A web-based multiplayer Blackjack game with responsive UI.
 
-<h3>Software/Frameworks/APIs used:</h3>
-<br>
-
+Software/Frameworks/APIs used:
+==============================
 <h5>Backend:</h5>
 * Tomcat web container
 * JAX-WS (SOAP messages)
@@ -16,7 +15,6 @@ A web-based multiplayer Blackjack game with responsive UI.
 * HTML5 
 * JavaScript / jQuery
 * Twitter Bootstrap
-
 
 You can try the game on [Red Hat OpenShift Cloud](http://tomcat-nirzarko.rhcloud.com/api/ "Blackjack Web App")
 (The service might be down, since it's on a free tier)
